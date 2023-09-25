@@ -1,7 +1,7 @@
 package com.example.curriculumdesign.service.impl;
 
 import com.example.curriculumdesign.mapper.LoginMapper;
-import com.example.curriculumdesign.pojo.user;
+import com.example.curriculumdesign.pojo.User;
 import com.example.curriculumdesign.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +12,9 @@ public class LoginServiceimpl implements LoginService {
    private   LoginMapper loginMapper;
 
     @Override
-    public user checkpwd(String uid,String hm) {
+    public User checkpwd(String uid, String hm) {
 
-        user checkpwd = loginMapper.checkpwd(uid, hm);
+        User checkpwd = loginMapper.checkpwd(uid, hm);
         String findname = loginMapper.findname(uid);
         if (findname==null){
             checkpwd.setName("管理员");

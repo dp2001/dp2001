@@ -1,5 +1,5 @@
 package com.example.curriculumdesign.service;
-import com.example.curriculumdesign.pojo.user;
+import com.example.curriculumdesign.pojo.User;
 public interface LoginService {
-    user checkpwd(String uid,String hm);
+    User checkpwd(String uid, String hm);
 }
