@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @RestController
+@CrossOrigin
 public class CourseController {
     @Autowired
     private CourseService courseService;
 
     @GetMapping("/course")
-    @CrossOrigin
     public Result page(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "5") Integer pageSize,
                        String cno, String cname,
@@ -31,26 +31,21 @@ public class CourseController {
         return Result.success(pageBean);
     }
 
-    @PostMapping("/course")
-    @CrossOrigin
-    public Result insert(@RequestBody c course) {
-        log.info("新增专业: {} ", course);
-         courseService.insert(course);
-         courseService.update(course);
-        return Result.success();
-
-    }
+        @PostMapping("/course")
+        public Result insert(@RequestBody c course) {
+            log.info("新增专业: {} ", course);
+             courseService.insert(course);
+            return Result.success();
+        }
 
     @DeleteMapping("/course/id")
-    @CrossOrigin
     public Result delete(String cno) {
-        log.info("删除sno为 {}", cno);
+        log.info("删除cno为 {}", cno);
         courseService.delete(cno);
         return Result.success();
     }
 
     @PutMapping("/course")
-    @CrossOrigin
     public Result updatatest(@RequestBody c course) {
         log.info("修改信息 {}", course);
         courseService.updatetest(course);

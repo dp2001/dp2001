@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
     @GetMapping("/user")
-    @CrossOrigin
     public Result page(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "5") Integer pageSize
     ) {
@@ -28,7 +28,6 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    @CrossOrigin
     public Result insert(@RequestBody User user ) {
         log.info("新增: {} ", user);
         userService.insertUser(user);
@@ -37,7 +36,6 @@ public class UserController {
     }
 
     @DeleteMapping("/user/id")
-    @CrossOrigin
     public Result delete(String uid) {
         log.info("删除sno为 {}{}",uid);
         userService.delete(uid);
@@ -45,7 +43,6 @@ public class UserController {
     }
 
     @PutMapping("/user")
-    @CrossOrigin
     public Result updatatest(@RequestBody User user) {
         log.info("修改信息 {}", user);
         userService.updateuser(user);

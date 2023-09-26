@@ -10,12 +10,12 @@ import com.example.curriculumdesign.pojo.s;
 
 @Slf4j
 @RestController
+@CrossOrigin
 public class StudentController {
     @Autowired
     private StudentService studentService;
 
     @GetMapping("/student")
-    @CrossOrigin
     public Result page(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "5")Integer pageSize,
                          String name,
@@ -29,17 +29,12 @@ public class StudentController {
     }
 
     @PostMapping("/student")
-    @CrossOrigin
     public Result insert(@RequestBody s studnet ){
         log.info("新增学生student: {} ",studnet);
         studentService.insert(studnet);
-
-        return Result.success();
-
-    }
+        return Result.success();}
 
     @DeleteMapping("/student/id")
-    @CrossOrigin
     public Result delete(Integer sno){
         log.info("删除sno为 {}",sno);
         studentService.delete(sno)  ;
@@ -47,9 +42,8 @@ public class StudentController {
     }
 
     @PutMapping("/student")
-    @CrossOrigin
     public Result updatatest(@RequestBody s student){
-        log.info("修改信息 {}",student);
+            log.info("修改信息 {}",student);
         studentService.updatetest(student);
         return Result.success();
     }

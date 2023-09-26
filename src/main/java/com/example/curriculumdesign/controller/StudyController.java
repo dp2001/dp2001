@@ -12,11 +12,11 @@ import java.util.Random;
 
 @RestController
 @Slf4j
+@CrossOrigin
 public class StudyController {
    @Autowired
     private StudyService studyService;
     @GetMapping("/study")
-    @CrossOrigin
     public Result page(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "5") Integer pageSize,
                        Integer sno, String cno,
@@ -30,26 +30,23 @@ public class StudyController {
 }
 
     @PostMapping("/study")
-    @CrossOrigin
     public Result insert(@RequestBody sc scourse) {
-                log.info("新增专业: {} ", scourse);
+                log.info("新增成绩: {} ", scourse);
                 studyService.supdatetest(scourse);
                return Result.success();
 
     }
 
     @DeleteMapping("/study/id")
-    @CrossOrigin
     public Result delete(Integer sno,String cno) {
-        log.info("删除sno为 {}{}",sno, cno);
+        log.info("删除成绩为 {}{}",sno, cno);
       studyService.delete(sno,cno);
         return Result.success();
     }
 
     @PutMapping("/study")
-    @CrossOrigin
     public Result updatatest(@RequestBody sc scourse) {
-        log.info("修改信息 {}", scourse);
+        log.info("修改成绩 {}", scourse);
                   studyService.supdatetest(scourse);
         return Result.success();
     }
