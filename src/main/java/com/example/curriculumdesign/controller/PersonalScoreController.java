@@ -11,11 +11,11 @@ import java.util.Map;
 
 @RestController
 @Slf4j
-@CrossOrigin
 public class PersonalScoreController {
     @Autowired
     private PersonalScoreService personalScoreService;
    @GetMapping("/personalscore")
+   @CrossOrigin
     public Result GetScorefrom(Integer sno){
        log.info("当前学号为：{}",sno);
        Map<String, Object> getscorefrom = personalScoreService.getscorefrom(sno);
@@ -25,6 +25,7 @@ public class PersonalScoreController {
 
 
     @GetMapping("/personalscore/sno")
+    @CrossOrigin
     public Result page(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "5")Integer pageSize,
                       Integer sno

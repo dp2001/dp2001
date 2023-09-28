@@ -15,12 +15,11 @@ import java.util.Map;
 
 @RestController
 @Slf4j
-@CrossOrigin
 public class ResearchController {
     @Autowired
     private ResearchService researchService;
     @GetMapping("/research")
-
+    @CrossOrigin
     public Result Research(Integer Begin ,Integer End){
         List<Object> research = researchService.Research(Begin, End);
            log.info("{}   {}",Begin,End);
@@ -28,6 +27,7 @@ public class ResearchController {
     }
 
     @GetMapping("/research/cname")
+    @CrossOrigin
     public  Result Fractionalsegment(Integer Begin,Integer End,String cname){
         List<Map<Object, Object>> segment = researchService.Segment(Begin, End, cname);
         log.info("{ }",segment);
